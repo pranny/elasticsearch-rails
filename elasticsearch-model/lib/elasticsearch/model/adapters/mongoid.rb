@@ -64,7 +64,7 @@ module Elasticsearch
           #
           def __find_in_batches(options={}, &block)
             options[:batch_size] ||= 1_000
-  
+
             all.no_timeout.each_slice(options[:batch_size]) do |items|
               yield items
             end
